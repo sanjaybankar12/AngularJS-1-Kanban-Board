@@ -1,0 +1,79 @@
+
+body
+{
+	background-color:#eee;
+}
+.container
+{
+	background-color:yellow;
+	width:100%;
+	margin-top:0;
+	height:680px;
+}
+nav .navbar 
+{
+	background-color:red;
+	margin-bottom:0;
+}
+#kan_Head
+{
+	text-align:center;
+	background-color:royalblue;
+	color:#fff;
+	
+	padding:8px 10px 12px 10px;
+}
+#kan_Head h3
+{
+	font-weight:bold;
+	font-size:24px;
+}
+
+#colheader
+{
+	background-color:pink;
+	font-weight:bold;
+	font-size:20px;
+	text-align:center;
+}
+
+#columns ul li
+{
+	margin:2%;
+	border-radius:0px;
+	border:1px solid #000;
+}
+#columns ul li .card-title
+{
+	color:royalblue;
+	font-size:12px;
+	font-weight:bold;
+	font-family:sans-serif;
+	line-height:1.2;
+}
+
+#columns ul li .card-content
+{
+	color:#333;
+	font-size:12px;
+	font-weight:bold;
+	font-family:sans-serif;
+	line-height:1.2;
+}
+
+.modal-header
+{
+	background-color:pink;
+}
+
+.modal-body
+{
+	width:90%;
+	margin:2% auto;
+}
+
+#sub_btn
+{
+	font-size:15px;
+	font-weight:bold;
+}

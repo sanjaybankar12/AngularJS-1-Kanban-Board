@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kanban Board</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/ng-sortable.min.css">
+    <link rel="stylesheet" type="text/css" href="css/ng-sortable.style.min.css">
+    <link rel="stylesheet" type="text/css" href="css/board.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="css/materialize.clockpicker.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="lib/jquery-ui.js"></script>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-route.min.js"></script>
+    <script type="text/javascript" src="lib/ui-bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/ui-bootstrap-tpls.js"></script>
+    <script type="text/javascript" src="lib/ng-sortable.js"></script>
+    <script type="text/javascript" src="js/model/model.js"></script>
+   	<script src="lib/materialize.clockpicker.js"></script>
+
+</head>
+<body>
+<div ng-app="myApp" ng-controller="myController">
+		<header id="kan_Head">
+			<h3>Kanban Board Test Assignment</h3>
+		</header>
+		<div class="container">
+			<div data-ng-model="kanbanBoard" id="board" ng-controller="BoardController">
+				<div id="columns" class="row">
+					<div class="col-sm-3 col-xs-3" ng-repeat="column in kanbanBoard.columns" data-columnindex="{{$index}}" id="column{{$index}}">
+						<div class="column">
+							<div id="colheader" class="columnHd">
+								<a style="cursor:pointer;float:left;margin-left:10px;" ng-click="addNewTask(column)"><i	class="glyphicon glyphicon-plus"></i></a>
+								&nbsp;&nbsp;&nbsp;<span>{{column.name}}</span>
+								<select class="form-control" style="font-size:12px;font-weight:normal;float:right; width:90px;padding:2px;height:30px;">
+									<option ng-click="sortList(column,1)" value="1">By Priority</option>
+									<option ng-click="sortList(column,2)" value="2">By Due Date</option>
+								</select>
+							</div>
+							<ul class="cards card-list" as-sortable="kanbanSortOptions" data-ng-model="column.cards">
+								<li class="card" ng-repeat="task in column.cards" as-sortable-item>
+									<div as-sortable-item-handle>
+										<div class="row">
+											<div class="col-sm-10">
+												<span class="card-title">{{$index+1}}) {{task.task_name}}</span>
+												<hr style="margin:5px auto;"/>
+												<span class="card-content">Due Date : {{task.due_date}}</span><b> , </b>
+												<span ng-if="task.priority=='high'" class="card-content">Priority : <span style="color:red;">{{task.priority | uppercase}}</span></span>
+												<span ng-if="task.priority=='medium'" class="card-content">Priority : <span style="color:royalblue;">{{task.priority | uppercase}}</span></span>
+												<span ng-if="task.priority=='low'" class="card-content">Priority : <span style="color:green;">{{task.priority | uppercase}}</span></span>
+											</div>
+											<div class="col-sm-2">
+												<a data-no-drag class=" removeCard pull-right btn btn-xs" ng-click="removeTask(column, task)"><span class="glyphicon glyphicon-remove"></span></a>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+
+</body>
+    <script type="text/javascript">
+
+		var app=angular.module('myApp', ['ngRoute','ui.bootstrap','as.sortable']);
+		  
+		app.controller('myController',function ($scope, $location) {
+		
+		});
+		
+		function Task(task_name,col_name, priority, due_date)
+		{
+			this.task_name = task_name;
+			this.col_name=col_name;
+			this.due_date = due_date;
+			this.priority = priority;
+			return this;
+		}
+	
+	</script>
+
+	<script type="text/javascript" src="js/services/DataHandler.js"></script>
+	<script type="text/javascript" src="js/services/DataFactory.js"></script>
+    <script type="text/javascript" src="js/services/Service.js"></script>
+    <script type="text/javascript" src="js/controllers/BoardController.js"></script>
+    <script type="text/javascript" src="js/controllers/TaskController.js"></script>
+</html>

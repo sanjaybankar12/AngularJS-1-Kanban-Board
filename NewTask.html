@@ -1,0 +1,38 @@
+
+<form ng-submit="addNewTask()" class="noMargin" name="myForm">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">&times;</button>
+        <h4 class="modal-title" ng-model="columnName">Add Task to '{{columnName}}' Category</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="control-label" for="newTaskname">Task Name </label>
+            <div>
+                <input type="text" id="newTaskname" placeholder="Enter Name of Task" ng-model="task_name" required focus-me class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="newTaskDueDate">Due Date</label>
+            <div>
+                <input type="text" id="newTaskDueDate" placeholder="Enter Due date" ng-model="due_date" required focus-me class="datepicker form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="newTaskPriority">Priority</label>
+            <div>
+                <select id="newTaskPriority" ng-model="priority" required class="form-control">
+					<option value="high">High</option>
+					<option value="medium">Medium</option>
+					<option value="low">Low</option>
+				</select>
+            </div>
+        </div>
+		<br/>
+		<div class="text-center">
+		        <button type="submit" id="sub_btn" class="btn btn-success">Add Task</button>
+		</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" ng-click="close()">Close</button>
+    </div>
+</form>
