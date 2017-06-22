@@ -8,6 +8,8 @@ To run project go to project directory and open index.html in browser
 
 We use AngularJS 1 with javascript to developed this kanban board. This Kanban Board has 4 categories such as New , On-Hold, In-Progress and Done. In these 4 categories, We can add new TASK with 3 properties such as Name, Due Date, Priority. Data is hold in Typescript's Object.
  
+![alt text](https://github.com/sanjaybankar12/AngularJS-1-Kanban-Board/blob/master/kb1.png)
+ 
 Task's can be sorted by 2 ways in Ascending Order :
 
     1) By Due Date
